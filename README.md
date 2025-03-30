@@ -13,14 +13,34 @@ El laberinto está compuesto por:
 ![Diagrama](Diagrama_UML_Laberinto.png)
 
 ## Diagrama Composite
+Compone objetos en una estructura de árbol para representar jerarquías todo-parte. El Composite permite que el cliente trate de manera uniforme tanto a objetos individuales como a objetos compuestos.
 
 ![Diagrama](Composite.png)
 
 
 ## Diagrama Decorator
+Asigna dinámicamente responsabilidades adicionales a un objeto. Los 
+decoradores proporcionan una alternativa flexible a la subclasificación para extender la funcionalidad. 
 
 ![Diagrama](Decorator.png)
 
 ## Diagrama Strategy
+Define una familia de algoritmos, encapsula cada uno en un objeto, de modo que son intercambiables. El Strategy permite cambiar el algoritmo sin que afecte al cliente. 
 
 ![Diagrama](Strategy.png)
+
+## Diagrama Template Method
+Define el esqueleto de un algoritmo en una operación, dejando que las subclases definan algunos de los pasos. El Template Method deja que las subclases redefinan ciertos pasos de un algoritmo sin variar la estructura del algoritmo. 
+
+![Diagrama](Template_Method.png)
+
+## Diagrama Singleton
+Asegura que una clase sólo tiene una instancia y proporciona un punto de acceso a la instancia
+
+![Diagrama](Singleton.png)
+
+## Diagrama Iterator
+Proporciona una forma de acceder secuencialmente a los elementos de 
+un agregado (colección, conjunto, aggregate) sin exponer su implementación.
+ 
+![Diagrama](Iterator.png)

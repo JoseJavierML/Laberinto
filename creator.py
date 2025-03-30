@@ -1,15 +1,29 @@
 from laberinto import Habitacion, Laberinto, Pared, Puerta, ParedBomba, Bomba, Bicho, Agresivo, Perezoso
+from este import Este
+from oeste import Oeste
+from norte import Norte
+from sur import Sur
+from orientacion import Orientacion
 
 class Creator:
     def crear_habitacion(self, num):
         habitacion = Habitacion(num)
-        habitacion.norte = self.crear_pared()
-        habitacion.sur = self.crear_pared()
-       
-        habitacion.este = self.crear_pared()
-        habitacion.oeste = self.crear_pared()
-        return habitacion
+        habitacion.orientaciones.append(self.crear_norte())  
+        habitacion.orientaciones.append(self.crear_sur())
+        habitacion.orientaciones.append(self.crear_oeste())
+        habitacion.orientaciones.append(self.crear_este())
 
+        pared_norte = self.crear_pared
+        habitacion.ponerElementoEnOrientacion(pared_norte)
+        pared_oeste = self.crear_pared
+        habitacion.ponerElementoEnOrientacion(pared_oeste)
+        pared_este = self.crear_pared
+        habitacion.ponerElementoEnOrientacion(pared_este)
+        pared_sur = self.crear_pared
+        habitacion.ponerElementoEnOrientacion(pared_sur)
+
+        return habitacion
+    
     def crear_laberinto(self):
         return Laberinto()
 
@@ -30,7 +44,15 @@ class Creator:
 
     def crear_modo_perezoso(self):
         return Perezoso()
-
+    
+    def crear_norte(self):
+        return Norte()
+    def crear_oeste(self):
+        return Oeste()
+    def crear_sur(self):
+        return Sur()
+    def crear_este(self):
+        return Este()
 class CreatorB(Creator):
     def crear_pared(self):
         return ParedBomba()
