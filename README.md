@@ -44,3 +44,20 @@ Proporciona una forma de acceder secuencialmente a los elementos de
 un agregado (colección, conjunto, aggregate) sin exponer su implementación.
  
 ![Diagrama](Iterator.png)
+
+## Diagrama Builder
+Separa la construcción de un objeto complejo de su representación, de modo que el mismo proceso de construcción se utiliza para crear diferentes representaciones. 
+ 
+![Diagrama](Builder.png)
+
+## Diagrama Proxy y Bridge
+Proxy: Proporciona un sustituto o referencia a otro objeto para controlar el acceso a ese objeto.
+
+Bridge: Desacopla una abstracción de su implementación de modo que las dos puedan variar de forma independiente.
+
+![Diagrama](Proxy.png)
+
+## Diagrama State
+Permite a un objeto alterar su comportamiento cuando cambia su estado interno. El objeto parecerá cambiar de clase. Reflejado en el diagrama en las calses EstadoEnte y EstadoPuerta.
+ 
+![Diagrama](State.png)
