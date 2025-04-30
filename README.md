@@ -61,3 +61,8 @@ Bridge: Desacopla una abstracción de su implementación de modo que las dos pue
 Permite a un objeto alterar su comportamiento cuando cambia su estado interno. El objeto parecerá cambiar de clase. Reflejado en el diagrama en las calses EstadoEnte y EstadoPuerta.
  
 ![Diagrama](State.png)
+
+## Diagrama Command
+ Encapsula una petición como un objeto, permitiendo parametrizar a los clientes con diferentes peticiones y soportar operaciones deshacer. 
+ 
+![Diagrama](Command.png)
