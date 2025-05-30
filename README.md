@@ -68,7 +68,7 @@ Permite a un objeto alterar su comportamiento cuando cambia su estado interno. E
 ![Diagrama](Command.png)
 
 ## Diagrama Proyecto Final
-    Visión general de la estructura de clases del proyecto final. 
-    Detalla la organización de los elementos del juego, las entidades, el manejo de comandos por el usuario, el sistema de inventario y la construcción del mundo del juego.
+Visión general de la estructura de clases del proyecto final. 
+Detalla la organización de los elementos del juego, las entidades, el manejo de comandos por el usuario, el sistema de inventario y la construcción del mundo del juego.
     
 ![Diagrama](Final_1.png)
