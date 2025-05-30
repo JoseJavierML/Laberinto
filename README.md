@@ -66,3 +66,8 @@ Permite a un objeto alterar su comportamiento cuando cambia su estado interno. E
  Encapsula una petición como un objeto, permitiendo parametrizar a los clientes con diferentes peticiones y soportar operaciones deshacer. 
  
 ![Diagrama](Command.png)
+
+## Diagrama Proyecto Final
+    Visión general de la estructura de clases del proyecto final. Detalla la organización de los elementos del juego, las entidades, el manejo de comandos por el usuario, el sistema de inventario y la construcción del mundo del juego.
+    
+![Diagrama](Final_1.png)

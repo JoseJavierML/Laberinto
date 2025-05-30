@@ -1,37 +1,76 @@
-from creator import Creator, CreatorB
-from juego import Juego
+from director import Director
+from juego import Juego 
+from typing import Optional 
 
-#ejemplo de uso
-fm = Creator()
-juego = Juego()
-juego.laberinto = juego.crearLaberinto2HabFM(fm)
-hab1=juego.obtenerHabitacion(1)
-hab2=juego.obtenerHabitacion(2)
-print(hab1.num)
-print(hab2.num)
+def inicializar_juego_real(ruta_json: str) -> Optional[Juego]:
 
-#laberinto con paredes bomba
-fmb = CreatorB()
-juego.laberinto = juego.crearLaberinto2HabFM(fmb)
-hab1=juego.obtenerHabitacion(1)
-hab2=juego.obtenerHabitacion(2)
-print(hab1.norte.activa)
-print(hab2.sur.activa)
+    print(f"MAIN: Creando instancia de Director...")
+    director_juego = Director() 
+    
+    print(f"MAIN: Director procesando archivo JSON: {ruta_json}")
+    
+    juego_configurado = director_juego.procesar(ruta_json) 
 
-# Crear laberinto de 4 habitaciones
-fm = Creator()
-juego.laberinto = juego.crearLaberinto4Hab(fm)
+    if not juego_configurado:
+        print("ERROR CRÍTICO MAIN: El Director no pudo construir la instancia de Juego.")
+        return None
+    
+    if not isinstance(juego_configurado, Juego):
+        print(f"ERROR CRÍTICO MAIN: El Director no devolvió un objeto Juego válido (obtenido: {type(juego_configurado)}).")
+        return None
+    
+    if not juego_configurado.personaje:
+        print("ERROR CRÍTICO MAIN: Personaje no fue creado o asignado por el builder al objeto Juego.")
+        return None 
+        
+    if not juego_configurado.personaje.posicion:
+        print("ERROR CRÍTICO MAIN: Personaje no tiene una posición inicial asignada por el builder.")
+        return None
 
-# Mostrar el número de cada habitación
-for habitacion in juego.laberinto.habitaciones:
-    print(f"Habitación {habitacion.num}")
+    print("MAIN: Juego construido y configurado exitosamente por el sistema Builder-Director.")
+    return juego_configurado
 
-print("Recorrer laberinto")
-juego.laberinto,recorrer(print)
 
-juego.abrir_puertas
-juego.cerrar_puertas
+def bucle_de_juego_interactivo(juego_actual: Juego):
+    if not juego_actual:
+        print("MAIN ERROR: Se intentó iniciar el bucle con un juego no válido.")
+        return
 
-bicho=juego.bichos[0]
-juego.lanzarBicho(bicho)
-bicho.vidas=0
+    print("\n" + juego_actual.configuracionGlobal.get("mensajeBienvenida", "¡Comienza la aventura interactiva!"))
+    juego_actual.mostrar_descripcion_habitacion_actual()
+
+    while not juego_actual.esta_terminado():
+        entrada = input("> ").strip()
+        if not entrada:
+            continue 
+        
+        if entrada.lower() == "salir":
+            juego_actual.terminar_juego("Has decidido salir del juego. ¡Hasta pronto!")
+           
+        else:
+            resultado_procesamiento = juego_actual.procesador_comandos.procesar(entrada)
+            if resultado_procesamiento: 
+                print(resultado_procesamiento)
+        
+        
+        if juego_actual.personaje and hasattr(juego_actual.personaje, 'vidas') and \
+           juego_actual.personaje.vidas <= 0 and not juego_actual.esta_terminado():
+            juego_actual.perder_juego()
+
+    
+    print("\n" + juego_actual.mensaje_final)
+    print("Gracias por jugar.")
+
+
+if __name__ == "__main__":
+  
+    ruta_json_personalizada = "C:\\Users\\jjmud\\Documentos_Locales\\Universidad\\3º AÑO\\2ºCautri\\Diseño software\\Laberinto Diseño de Software\\juego_inicial.json"
+    
+    print(f"MAIN: Iniciando el juego con el builder y el archivo: {ruta_json_personalizada}")
+    mi_juego_instancia = inicializar_juego_real(ruta_json_personalizada)
+
+    if mi_juego_instancia:
+        print("MAIN: Juego inicializado por el builder. Iniciando bucle interactivo.")
+        bucle_de_juego_interactivo(mi_juego_instancia)
+    else:
+        print("MAIN: No se pudo iniciar el juego. Revisa los errores anteriores.")

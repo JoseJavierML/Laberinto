@@ -1,0 +1,129 @@
+{
+  "forma": "cuadrado",
+  "configuracionGlobal": {
+    "mensajeBienvenida": "Despiertas desorientado. Un antiguo laberinto se extiende ante ti... ¿Encontrarás la salida?"
+  },
+  "personajePrincipal": {
+    "nombre": "Eldrin",
+    "vidas": 20,
+    "poder": 5,  
+    "inventario": {
+      "capacidad": 5,
+      "itemsIniciales": [] 
+    },
+    "posicionInicial": {
+      "habitacionNum": 1 
+    }
+  },
+  "definicionItemsReconocidos": [
+    "HojaGenerica",
+    "Arma",
+    "PocionCuracion",
+    "Llave",
+    "FragmentoCodigo"
+  ],
+  "laberinto": {
+    "descripcion": "El Laberinto Olvidado de los Ecos.",
+    "formaPredeterminada": "cuadrada", 
+    "habitaciones": [
+      {
+        "id": "ClaroSereno", "num": 1, "nombre": "Claro Sereno",
+        "descripcion": "Un claro tranquilo bañado por una luz tenue que se filtra entre las copas de árboles ancestrales. Un sendero apenas visible se adentra hacia el norte.",
+        "forma": "cuadrada",
+        "itemsEnHabitacion": [
+          { "tipo": "Arma", "nombre": "Palo de Madera", "poder_adicional": 2 }
+        ]
+      },
+      {
+        "id": "SenderoAntiguo", "num": 2, "nombre": "Sendero Antiguo",
+        "descripcion": "El sendero serpentea entre raíces expuestas y piedras cubiertas de musgo. Un trozo de pergamino yace en el suelo.",
+        "forma": "cuadrada",
+        "itemsEnHabitacion": [
+          { "tipo": "FragmentoCodigo", "nombre": "Pergamino Roto", "pista": "El primer número que resuena es... el siete." }
+        ]
+      },
+      {
+        "id": "CruceEncantado", "num": 3, "nombre": "Cruce Encantado",
+        "descripcion": "El sendero converge en un cruce. Al este, un oscuro túnel rocoso. Al oeste, una puerta de hierro oxidado. Hacia el norte, el camino principal parece continuar.",
+        "forma": "cuadrada",
+        "itemsEnHabitacion": [] 
+      },
+      {
+        "id": "TunelRocoso", "num": 4, "nombre": "Túnel Rocoso",
+        "descripcion": "Un túnel estrecho y húmedo. El aire es frío. Sobre una saliente rocosa, ves una poción y una vieja llave.",
+        "forma": "cuadrada",
+        "itemsEnHabitacion": [
+          { "tipo": "PocionCuracion", "nombre": "Poción Curativa Mayor", "puntos_vida_recuperados": 5 },
+          { "tipo": "Llave", "nombre": "Llave de Hierro Simple" } 
+        ]
+      },
+      {
+        "id": "CavernaCristalina", "num": 5, "nombre": "Caverna Cristalina",
+        "descripcion": "El túnel se abre a una caverna iluminada por el tenue resplandor de cristales incrustados en las paredes. En el centro, algo brilla con intensidad, pero un guardián formidable protege el tesoro.",
+        "forma": "cuadrada",
+        "itemsEnHabitacion": [ 
+          { "tipo": "Arma", "nombre": "Palo de Madera Común", "poder_adicional": 2 } 
+        ]
+      },
+      {
+        "id": "PasajeOlvidado", "num": 6, "nombre": "Pasaje Olvidado",
+        "descripcion": "Un pasadizo estrecho cubierto de telarañas. Al final, un pesado portón de piedra bloquea el avance hacia el norte.",
+        "forma": "cuadrada",
+        "itemsEnHabitacion": []
+      },
+      {
+        "id": "CamaraSecreta", "num": 7, "nombre": "Cámara Secreta",
+        "descripcion": "Una cámara oculta con extraños símbolos grabados en las paredes. Un fragmento de nota descansa sobre un desgastado atril.",
+        "forma": "cuadrada",
+        "itemsEnHabitacion": [
+          { "tipo": "FragmentoCodigo", "nombre": "Nota Descolorida", "pista": "El dígito que buscas en el centro es... el tres." }
+        ]
+      },
+      {
+        "id": "CorredorSombras", "num": 8, "nombre": "Corredor de las Sombras",
+        "descripcion": "Un corredor largo y oscuro. Sientes una presencia vigilante. El camino continúa al norte.",
+        "forma": "cuadrada",
+        "itemsEnHabitacion": [] 
+      },
+      {
+        "id": "SantuarioInterior", "num": 9, "nombre": "Santuario Interior",
+        "descripcion": "Llegas a un santuario silencioso. Una imponente puerta de obsidiana con un complejo mecanismo de código se alza al norte, emanando un aura de misterio.",
+        "forma": "cuadrada",
+        "itemsEnHabitacion": [] 
+      }
+    ],
+    "puertasGlobales": [
+      [1, "Norte", 2, "Sur",   "PuertaNormal",           {"nombre": "Entrada al Sendero Antiguo"}],
+      [2, "Norte", 3, "Sur",   "PuertaNormal",           {"nombre": "Hacia el Cruce Encantado"}],
+      [3, "Este",  4, "Oeste", "PuertaNormal",           {"nombre": "Al Túnel Rocoso"}],
+      [4, "Norte", 5, "Sur",   "PuertaNormal",           {"nombre": "A la Caverna Cristalina"}],
+      [3, "Oeste", 6, "Este",  "PuertaConLlaveGenerica", {"nombre": "Puerta de Hierro Oxidado"}], 
+      [6, "Norte", 7, "Sur",   "PuertaConLlaveGenerica", {"nombre": "Portón de Piedra"}],       
+      [7, "Norte", 8, "Sur",   "PuertaNormal",           {"nombre": "Al Corredor de las Sombras"}],
+      [8, "Norte", 9, "Sur",   "PuertaNormal",           {"nombre": "Al Santuario Interior"}],
+      [9, "Norte", 0, "Sur",   "PuertaDeSalida",         {"nombre": "Puerta de Obsidiana del Destino", "codigo_secreto": "735"}] 
+    ],
+    "bichos": [
+      { "nombre": "Guardián Cristalino", "modo": "Agresivo", "posicion": 5, "vidas": 20, "poder": 6,
+        "drops": [
+          { "tipo": "Arma", "nombre": "Espada de Cristal Antiguo", "poder_adicional": 10 },
+          { "tipo": "Llave", "nombre": "Llave Ornamentada Brillante" }, 
+          { "tipo": "PocionCuracion", "nombre": "Esencia de Cristal Puro", "puntos_vida_recuperados": 20 }
+        ]
+      },
+      { "nombre": "Acechador Sombrío", "modo": "Agresivo", "posicion": 8, "vidas": 30, "poder": 8,
+        "drops": [
+          { "tipo": "FragmentoCodigo", "nombre": "Fragmento Sombrío", "pista": "El número final que se oculta en la penumbra es... el cinco." }
+        ]
+      },
+      { "nombre": "Escarabajo Paciente", "modo": "Perezoso", "posicion": 3, "vidas": 8, "poder": 1,
+        "drops": [
+          { "tipo": "PocionCuracion", "nombre": "Gota de Rocío Curativa", "puntos_vida_recuperados": 2 }
+        ]
+      }
+    ],
+    "condicionVictoria": {
+      "descripcion": "Desvela el código y cruza la Puerta de Obsidiana para trascender el laberinto."
+    }
+  }
+}

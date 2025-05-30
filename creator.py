@@ -1,4 +1,12 @@
-from laberinto import Habitacion, Laberinto, Pared, Puerta, ParedBomba, Bomba, Bicho, Agresivo, Perezoso
+from laberinto import Laberinto
+from habitacion import Habitacion
+from pared import Pared
+from pared_bomba import ParedBomba
+from puerta import Puerta
+from bicho import Bicho
+from bomba import Bomba
+from agresivo import Agresivo
+from perezoso import Perezoso
 from este import Este
 from oeste import Oeste
 from norte import Norte
