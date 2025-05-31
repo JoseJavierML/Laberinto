@@ -72,3 +72,8 @@ Visión general de la estructura de clases del proyecto final.
 Detalla la organización de los elementos del juego, las entidades, el manejo de comandos por el usuario, el sistema de inventario y la construcción del mundo del juego.
     
 ![Diagrama](Final_1.png)
+
+## Diagrama De Secuencia Jugador Ataca a un Bicho
+Diagrama de secuencia para la funcionalidad de 'Atacar Bicho'. Ilustra cómo el comando del jugador desencadena una serie de interacciones entre el personaje, el bicho objetivo, sus modos de comportamiento y el estado general del juego, hasta la resolución del turno de ataque.
+    
+![Diagrama](DiagramaDeSecuencia.jpg)
